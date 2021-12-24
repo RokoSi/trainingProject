@@ -20,10 +20,10 @@ public class DataProviderXml {
         return wrapper;
     }
     /*public static  void write(String filePath, T object) throws Exception {
-        try {
+        try {фывфывфы
             createFileIfNotExists(filePath);
         } catch (Exception e) {
-            //log.error("write[1]: error = {}", e.getMessage());
+master            //log.error("write[1]: error = {}", e.getMessage());
         }
 
         Serializer serializer = new Persister();
