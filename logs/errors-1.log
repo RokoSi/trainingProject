@@ -1,0 +1,13 @@
+d ERROR r.s.t.Main [main] Goodbye, World!
+d ERROR r.s.t.Main [main] Configurations not found
+d ERROR r.s.t.Main [main] Configurations not found
+d ERROR r.s.t.Main [main] Configurations not found
+d ERROR r.s.t.Main [main] Configurations not found
+d ERROR r.s.t.Main [main] Configurations not found
+2021-11-22 10:53:57.795 ERROR r.s.M.Main [main] Configurations not found
+2021-12-20 16:40:47.274 ERROR r.s.M.a.DataproviderCsv [main] showAllRaces Error
+2021-12-20 16:40:47.294 ERROR r.s.M.a.DataproviderCsv [main] java.io.FileNotFoundException: ./src/main/resources/csv (Это каталог)
+2021-12-20 16:41:38.802 ERROR r.s.M.a.DataproviderCsv [main] showAllRaces Error
+2021-12-20 16:41:38.809 ERROR r.s.M.a.DataproviderCsv [main] java.lang.NullPointerException: Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because "raceList" is null
+2021-12-20 16:42:36.647 ERROR r.s.M.a.DataproviderCsv [main] showAllRaces Error
+2021-12-20 16:42:36.653 ERROR r.s.M.a.DataproviderCsv [main] java.lang.NullPointerException: Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because "raceList" is null

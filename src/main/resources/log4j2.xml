@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+        </Console>
+        <RollingFile name="errors_file" fileName="logs/errors.log"
+                     filePattern="logs/errors-%i.log" append="True">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %p %c{1.} [%t] %m%n" />
+            <SizeBasedTriggeringPolicy size="1 KB" />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="error" additivity="false">
+        </Root>
+        <Logger name="ru.sfedu.Medicine" additivity="false" level="TRACE">
+            <AppenderRef level="INFO" ref="console"/>
+            <AppenderRef level="ERROR" ref="errors_file"/>
+        </Logger>
+    </Loggers>
+
+</Configuration>
