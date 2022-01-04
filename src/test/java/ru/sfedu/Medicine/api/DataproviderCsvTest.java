@@ -1,6 +1,8 @@
 package ru.sfedu.Medicine.api;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.junit.Test;
 import ru.sfedu.Medicine.model.ListPatient;
 
@@ -64,14 +66,17 @@ public class DataproviderCsvTest {
 
    @Test
     public void SearchById() throws IOException {
-       String idCsv ="2";
+       String idCsv ="1";
         DataproviderCsv dateprV =new DataproviderCsv();
         ListPatient NumPatient1 = new ListPatient();
         NumPatient1 = dateprV.SearchBy(idCsv);
+        //System.out.print(dateprV.SearchBy(idCsv));
         //System.out.print();
-       String id = "1";
+       String id = "2";
        ListPatient NumPatient2 = new ListPatient();
         NumPatient2= dateprV.SearchBy(id);
+       //System.out.print(NumPatient2.getName()+ "\n"+NumPatient2.getId()+ "\n"+NumPatient2.getTest2()+ "\n"+NumPatient2.getNumPas()+ "\n");
+       //System.out.print(NumPatient2);
 
     }
 
@@ -85,24 +90,16 @@ public class DataproviderCsvTest {
 
     }
 
+
     @Test
-    public void UpdatePatient() throws IOException, CsvException {
+    public void FreeAll() throws CsvRequiredFieldEmptyException, CsvDataTypeMismatchException, IOException {
         DataproviderCsv dataproviderCsv = new DataproviderCsv();
         ListPatient listPatient = new ListPatient();
         listPatient = dataproviderCsv.SearchBy("1");
+
         //System.out.print(listPatient.getName() +"\n"+listPatient.getId() +"\n"+listPatient.getTest2() +"\n" + listPatient.getNumPas() +"\n");
-
-       dataproviderCsv.UpdateName(listPatient,"oleg2");
-
-
-    }
-    @Test
-    public void TestRet() throws CsvException, IOException {
-        DataproviderCsv dataprov =new DataproviderCsv();
-        ListPatient patient = new ListPatient();
-        String idCsv ="2";
-        ListPatient NumPatient1 = new ListPatient();
-        dataprov.ReturnFile();
+        DataproviderCsv dr =new DataproviderCsv();
+        dr.UpdateName(listPatient,"oleg2");
     }
 
 

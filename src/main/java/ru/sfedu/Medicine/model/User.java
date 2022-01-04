@@ -23,7 +23,7 @@ public class User<T>{
              */
     })
 
-    public User(List<T> list) {
+    public User() {
         this.list = list;
     }
 

@@ -17,6 +17,8 @@ public class ListPatient  implements Serializable {
     @CsvBindByPosition(position = 3)
     private String NumPas;
 
+
+
     public String getNumPas() {
         return NumPas;
     }

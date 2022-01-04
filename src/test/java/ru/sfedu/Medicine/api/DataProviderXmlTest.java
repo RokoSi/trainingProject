@@ -8,7 +8,7 @@ public class DataProviderXmlTest {
     public void write () throws Exception {
 
         DataProviderXml dataproviderXml = new DataProviderXml();
-        dataproviderXml.NewPatient();
+        //dataproviderXml.NewPatient();
 
     }
 
