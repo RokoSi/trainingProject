@@ -1,5 +1,6 @@
 package ru.sfedu.Medicine.model;
 
+import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.ElementListUnion;
 import org.simpleframework.xml.Root;
@@ -11,8 +12,18 @@ import java.util.Objects;
 public class User<T>{
     private List<T> list;
 
-    @ElementListUnion({
-            @ElementList(entry = "ListPatient", type = ListPatient.class, inline = true),
+    public int getS() {
+        return S;
+    }
+
+    public void setS(int s) {
+        S = s;
+    }
+
+    @Element
+    public int S;
+    /*@ElementListUnion({
+            @ElementList(entry = "User", type = User.class, inline = true),
             /*@ElementList(entry = "human", type = Human.class, inline = true),
             @ElementList(entry = "transport", type = Trans.class, inline = true),
             @ElementList(entry = "barrier", type = Barrier.class, inline = true),
@@ -20,8 +31,8 @@ public class User<T>{
             @ElementList(entry = "history", type = History.class, inline = true),
             @ElementList(entry = "motion", type = Motion.class, inline = true),
 
-             */
-    })
+
+    })*/
 
     public User() {
         this.list = list;

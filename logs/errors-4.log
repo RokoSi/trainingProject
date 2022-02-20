@@ -1,0 +1,9 @@
+2022-01-09 00:04:45.630 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:04:45.643 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "ListPatient" is null
+2022-01-09 00:07:00.951 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:07:00.953 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "ListPatient" is null
+2022-01-09 00:09:55.683 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:09:55.689 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "ListPatient" is null
+2022-01-09 00:11:41.621 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:11:41.622 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "ListPatient" is null
+2022-01-09 00:13:46.443 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error

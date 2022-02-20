@@ -1,136 +1,135 @@
 package ru.sfedu.Medicine.api;
 
 
-import com.opencsv.bean.CsvToBeanBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.opencsv.exceptions.CsvException;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
-import ru.sfedu.Medicine.model.User;
-import ru.sfedu.Medicine.utils.ConfigurationUtil;
+import ru.sfedu.Medicine.model.CommandType;
+import ru.sfedu.Medicine.model.ListPatient;
+import ru.sfedu.Medicine.model.RepositoryType;
+import ru.sfedu.Medicine.model.WrapperXML;
+import ru.sfedu.Medicine.utils.Constants;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
-
+import static ru.sfedu.Medicine.utils.ConfigurationUtil.getConfigurationEntry;
 
 public class DataProviderXml {
 
     private static final String PATH = "./src/main/resources/xml/User.xml";
-    private static final String EXTENSION = ".xml";
+    //private static final String EXTENSION = ".xml";
 
     private static final Logger log = LogManager.getLogger(DataProviderXml.class);
     private static final Serializer serializer = new Persister();
+    private final String mongoDbName= getConfigurationEntry(Constants.MONGO_DB_NAME);
+    public DataProviderXml() throws Exception {}
 
-    List<User> UserList = null;
-    User UserBean = new User();
-
-
-    public DataProviderXml() throws Exception {
-
-    }
-
-    public void SaveAllUser(String name, String id,String OMC) throws Exception {
-
-    }
-
-    public void NewPatient(User User) throws Exception {
+    public boolean addParticipantRecord(ListPatient patient){
         try{
-            //log.info("addParticipantRecord[1]:");
-            if (User == null)
-                throw new Exception("Adding record error, record equals null");
-            UserList = readFile(ConfigurationUtil.getConfigurationEntry(PATH)+ConfigurationUtil.getConfigurationEntry(EXTENSION));
-            UserList.add(User);
-
-            //log.info("Participant added[2]: ".concat(User.toString()));
-            //writeFile(UserList, User.class);
-            //return true;
+            List<ListPatient> ListPatient = new ArrayList<>();
+            log.info("addParticipantRecord[1]:");
+            ListPatient= readFile(ListPatient.class);
+            ListPatient.add(patient);
+            writeFile(ListPatient, ListPatient.class);
+            return true;
         }
         catch (Exception e){
             log.error("addParticipantRecord Error");
             log.error(e.getClass().getName() + ": " + e.getMessage());
-            //return false;
-        }
-        }
-
-
-
-    public void showAllInfoPatient() throws Exception {
-        //log.info("showAllParticipants[1]:");
-        UserList = readFile(ConfigurationUtil.getConfigurationEntry(PATH)+ConfigurationUtil.getConfigurationEntry(EXTENSION));
-        for(int i = 0; i< UserList.size(); i++) {
-            System.out.println(UserList.get(i));
+            return false;
         }
     }
-
-   // private List<User> readFile(String s) {
-
-
-    public String SearchBy(String ns) throws IOException {
+    public ListPatient SearchBy(String ns) throws IOException {
+        List<ListPatient> ListPatient = new ArrayList<>();
+        ListPatient patient = new ListPatient();
+        ListPatient = readFile(ListPatient.class);
+        int ns1 = Integer.parseInt(String.valueOf(ns));
+        for (int i=0;i<=ListPatient.size();i++) {
+            patient = ListPatient.get(i);
+            if (patient.getId()== ns1) {
+                return patient;
+            }
+        }
         return null;
+    }
+    public String deletePatient(ListPatient Patient) throws IOException, CsvException {
+        List<ListPatient> beans = new ArrayList<>();
+        ListPatient listPatient = new ListPatient();
+        beans = readFile(ListPatient.class);
+        for (int i = 0; i < beans.size(); i++) {
+            listPatient = beans.get(i);
+            if(listPatient.getName().equals(Patient.getName())) {
+                MongoProvider.save(CommandType.DELETED, RepositoryType.XML, mongoDbName, beans.get(i));
+                beans.remove(i);
+            }
         }
-    public void Patient (){
-        File file = new File("./src/main/resources/xml/User.xml");
-        List list = new ArrayList();
-        Serializer serializer = new Persister();
-
+        writeFile(beans, ListPatient.class);
+        return "0";
     }
 
-    private <T> List<T> readFile(String path)   {
-        List<T> AllBeans = null;
+    public  void UpdateName(ListPatient Patient,String Name) throws IOException {
+        List<ListPatient> beans = new ArrayList<>();
+        ListPatient listPatient = new ListPatient();
+        beans = readFile(ListPatient.class);
+        for (int i = 0; i <= beans.size(); i++) {
+            listPatient = beans.get(i);
+            if (listPatient.getName().equals(Patient.getName())) {
+                listPatient.setName(Name);
+                MongoProvider.save(CommandType.UPDATED, RepositoryType.XML, mongoDbName, beans.get(i));
+                beans.set(i, listPatient);
+            }
+
+        }
+        writeFile(beans, ListPatient.class);
+    }
+
+
+    private <T> boolean writeFile(List<T> beans, Class<?> clazz)  {
         try {
-            checkFile(AllBeans.getClass());
-            AllBeans = new CsvToBeanBuilder(new FileReader(path)).withType(AllBeans.getClass()).build().parse();
-
-        }
-        catch(Exception e){
-            log.error("loadBeanList Error");
-            log.error(e.getClass().getName() + ": " + e.getMessage());
-        }
-        return AllBeans;
-
-
-    }
-    private void checkFile(Class<?> clazz) throws IOException {
-        File file = new File(ConfigurationUtil.getConfigurationEntry(PATH)+ConfigurationUtil.getConfigurationEntry(EXTENSION));
-
-    }
-
-    private <T> List<T> readFile(String path, T bean) {
-        List<T> UserList = null;
-        try {
-            //log.info("Start readFile[1]:");
-            checkFile(bean.getClass());
-            UserList = new CsvToBeanBuilder(new FileReader(path)).withType(bean.getClass()).build().parse();
-            //log.info("чтение выполнено[2]:");
-        }
-        catch(Exception e){
-            log.error("ошибка ");
-
-        }
-        return UserList;
-    }
-    /*private <T> boolean writeFile(List<T> beans, Class<?> clazz)  {
-        try {
-
-            FileWriter sw = new FileWriter(ConfigurationUtil.getConfigurationEntry(PATH)
-                    +ConfigurationUtil.getConfigurationEntry(EXTENSION));
-            CSVWriter writer = new CSVWriter(sw);
-            StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(writer).build();
-            beanToCsv.write(beans);
-            writer.close();
-
+            log.info("Start saveFile[1]:");
+            File source = new File(PATH);
+            Writer writer = new FileWriter(source);
+            if(beans.isEmpty()) {
+                writer.write("");
+                log.info("Saving beans is empty, file was deleted");
+                return true;
+            }
+            WrapperXML<T> xml = new WrapperXML<>(beans);
+            serializer.write(xml, writer);
+            log.info("File Saved[2]:");
             return true;
         }
         catch(Exception e) {
-            //log.error("saveFile Error");
+            log.error("saveFile Error");
             log.error(e.getClass().getName() + ": " + e.getMessage());
             return false;
         }
-    }*/
     }
+    private <T> List<T> readFile(Class<?> clazz){
+        List<T> loadedBeans = new ArrayList<>();
+        try{
+            log.info("Start readFile[1]:");
+            File source = new File(PATH);
+            if(source.length() != 0) {
+                loadedBeans = serializer.read(WrapperXML.class, source).getList();
+                log.info("Beans loaded[2]:");
+            }
+            else
+                log.info("Empty beans loaded[2]: ");
+        }
+        catch(Exception e){
+            log.error("readFile Error");
+            log.error(e.getClass().getName() + ": " + e.getMessage());
+        }
+        return loadedBeans;
+    }
+}
 
 

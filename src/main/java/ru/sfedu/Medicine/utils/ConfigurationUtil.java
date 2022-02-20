@@ -49,8 +49,18 @@ public class ConfigurationUtil {
      * @return Entry value by key
      * @throws IOException In case of the configuration file read failure
      */
-    public static String getConfigurationEntry(String key) throws IOException{
+   /* public static String getConfigurationEntry(String key) throws IOException{
         return getConfiguration().getProperty(key);
+    }*/
+
+    public static String getConfigurationEntry(String key) {
+        try {
+            return getConfiguration().getProperty(key);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
-    
+
+
 }

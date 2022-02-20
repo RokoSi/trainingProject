@@ -1,0 +1,12 @@
+2022-01-09 00:24:47.677 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "Patient" is null
+2022-01-09 00:28:43.819 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:28:43.821 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "Patient" is null
+2022-01-09 04:21:29.108 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 04:21:29.110 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "Patient" is null
+2022-02-12 20:15:56.962 ERROR r.s.M.a.Mongoprovider [main] save [2]: An exception occurred when encoding using the AutomaticPojoCodec.
+Encoding a Class: 'class ru.sfedu.Medicine.model.ListPatient' failed with the following exception:
+
+Class contains generic types that have not been specialised.
+Top level classes with generic types are not supported by the PojoCodec.
+
+A custom Codec or PojoCodec may need to be explicitly configured and registered to handle this type.

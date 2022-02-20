@@ -1,0 +1,9 @@
+2022-01-09 00:21:11.240 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:21:11.260 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "ListPatient" is null
+2022-01-09 00:21:56.299 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:21:56.301 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "ListPatient" is null
+2022-01-09 00:22:26.678 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:22:26.687 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "ListPatient" is null
+2022-01-09 00:23:57.049 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error
+2022-01-09 00:23:57.052 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "ListPatient" is null
+2022-01-09 00:24:47.675 ERROR r.s.M.a.DataProviderXml [main] addParticipantRecord Error

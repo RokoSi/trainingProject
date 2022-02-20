@@ -1,19 +1,23 @@
 package ru.sfedu.Medicine.model;
 
 import com.opencsv.bean.CsvBindByPosition;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
 import java.io.Serializable;
-
+@Root
 public class ListPatient  implements Serializable {
-    @CsvBindByPosition(position = 0)
-    private String name;
-
+    @Element
     @CsvBindByPosition(position = 1)
     private int Id;
-
+    @Element
+    @CsvBindByPosition(position = 0)
+    private String name;
+    @Element
     @CsvBindByPosition(position = 2)
     private String test2;
     //@CsvBindByName(column = "test1")
+    @Element
     @CsvBindByPosition(position = 3)
     private String NumPas;
 

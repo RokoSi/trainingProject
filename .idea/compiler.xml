@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Medicine" />
         <module name="MainProject" />
+        <module name="trainingProject" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />

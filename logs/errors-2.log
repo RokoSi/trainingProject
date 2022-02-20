@@ -1,0 +1,8 @@
+2021-12-20 16:44:04.292 ERROR r.s.M.a.DataproviderCsv [main] showAllRaces Error
+2021-12-20 16:44:04.307 ERROR r.s.M.a.DataproviderCsv [main] java.lang.NullPointerException: Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because "raceList" is null
+2021-12-20 16:45:13.606 ERROR r.s.M.a.DataproviderCsv [main] showAllRaces Error
+2021-12-20 16:45:13.614 ERROR r.s.M.a.DataproviderCsv [main] java.lang.NullPointerException: Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because "patients" is null
+2021-12-20 19:46:21.167 ERROR r.s.M.a.DataproviderCsv [main] showAllRaces Error
+2021-12-20 19:46:21.185 ERROR r.s.M.a.DataproviderCsv [main] java.lang.NullPointerException: Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because "patients" is null
+2022-01-08 22:28:48.334 ERROR r.s.M.a.DataProviderXml [main] saveFile Error
+2022-01-08 22:28:48.360 ERROR r.s.M.a.DataProviderXml [main] java.lang.NullPointerException: Cannot invoke "java.util.List.isEmpty()" because "beans" is null

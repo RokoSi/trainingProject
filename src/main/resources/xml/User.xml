@@ -1,5 +1,14 @@
-<User>
-   <ID>1</ID>
-   <name>name</name>
-   <OMC>123</OMC>
-</User>
+<root>
+   <object class="ru.sfedu.Medicine.model.ListPatient">
+      <Id>1</Id>
+      <name>oleg2</name>
+      <test2>2</test2>
+      <NumPas>12312151</NumPas>
+   </object>
+   <object class="ru.sfedu.Medicine.model.ListPatient">
+      <Id>3</Id>
+      <name>Anton</name>
+      <test2>332</test2>
+      <NumPas>6018644587</NumPas>
+   </object>
+</root>
